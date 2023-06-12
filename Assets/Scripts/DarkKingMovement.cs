@@ -16,7 +16,6 @@ public class DarkKingMovement : MonoBehaviour
     private float jumpTimeCounter;
     [SerializeField] private float jumpTime;
 
-
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -25,22 +24,36 @@ public class DarkKingMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
 
+    [Header("Dashing")]
+    [SerializeField] private bool canDash;
+    [SerializeField] private bool isDashing;
+    [SerializeField] private float dashingPower;
+    [SerializeField] private float dashingTime;
+    [SerializeField] private float dashingCooldown;
+    [SerializeField] private TrailRenderer tr;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        canDash = true;
     }
 
     private void FixedUpdate()
     {
-
+        if (isDashing)
+        {
+            return;
+        }
     }
 
     private void Update()
     {
-
-
-        //isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        if (isDashing)
+        {
+            return;
+        }
 
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
@@ -49,6 +62,7 @@ public class DarkKingMovement : MonoBehaviour
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
+            FindObjectOfType<AudioManager>().Play("KingJump");
         }
 
         if (IsGrounded())
@@ -101,10 +115,46 @@ public class DarkKingMovement : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
 
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            Debug.Log("Dash key pressed");
+            StartCoroutine(Dash(moveInput));
+        }
+
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+    }
+
+    private IEnumerator Dash(float moveInput)
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f; // Disable gravity during dashing
+
+        // Change sprite color to red temporarily
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Color originalColor = spriteRenderer.color;
+        spriteRenderer.color = Color.red;
+
+        rb.velocity = new Vector2(Mathf.Sign(moveInput) * dashingPower, 0f);
+        FindObjectOfType<AudioManager>().Play("KingDash");
+        tr.emitting = true;
+
+        yield return new WaitForSeconds(dashingTime);
+
+        // Revert back to the original color
+        spriteRenderer.color = originalColor;
+
+        tr.emitting = false;
+        rb.gravityScale = originalGravity; // Restore original gravity scale
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
