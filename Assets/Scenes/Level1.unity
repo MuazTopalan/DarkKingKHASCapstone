@@ -803,6 +803,67 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &844405492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.096
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859368, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306682603192859379, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: m_Name
+      value: Ghoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316197028184788416, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
+      propertyPath: walkDistance
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd842d98a2bbcc64e8a154104022ff7c, type: 3}
 --- !u!1 &937827058
 GameObject:
   m_ObjectHideFlags: 0
@@ -5961,6 +6022,10 @@ PrefabInstance:
     - target: {fileID: 6449256703956064863, guid: de2a6a908c7d1db48845eccf3c2a97cd, type: 3}
       propertyPath: m_Name
       value: Spitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449256703956064863, guid: de2a6a908c7d1db48845eccf3c2a97cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6449256703956064863, guid: de2a6a908c7d1db48845eccf3c2a97cd, type: 3}
       propertyPath: m_TagString

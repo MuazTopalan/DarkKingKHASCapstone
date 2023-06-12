@@ -52,20 +52,12 @@ public class SpitterAI : MonoBehaviour
         Collider2D playerCollider = Physics2D.OverlapBox(boxCenter, boxSize, 0f, LayerMask.GetMask("Player"));
 
         isPlayerInRange = playerCollider != null;
-
-        if (isPlayerInRange)
-        {
-            Debug.Log("Player is in range");
-        }
-        else
-        {
-            Debug.Log("Player is not in range");
-        }
     }
 
 
     public void Spit()
     {
+        FindObjectOfType<AudioManager>().Play("Spit");
         // Instantiate the spit projectile from the spitSpawnPoint position and rotation
         GameObject spit = Instantiate(spitPrefab, spitSpawnPoint.position, Quaternion.identity);
 

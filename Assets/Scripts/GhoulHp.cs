@@ -47,7 +47,7 @@ public class GhoulHp : MonoBehaviour
     private void Die()
     {
         anim.SetTrigger("die");
-        FindObjectOfType<AudioManager>().Play("KingDeath");
+        FindObjectOfType<AudioManager>().Play("Death");
 
         // Disable movement script
         if (ghoulAIScript != null)

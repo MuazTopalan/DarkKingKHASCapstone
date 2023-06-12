@@ -87,3 +87,21 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Spit
+    clip: {fileID: 8300000, guid: 885ee25337e78974c8661add8de91bb8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: f0ab82c8f5c521f48a6c6e99f5ee453a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GhoulAttack
+    clip: {fileID: 8300000, guid: 728f08e68eac66146aa047e6b5405c45, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

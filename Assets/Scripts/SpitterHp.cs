@@ -48,7 +48,7 @@ public class SpitterHp : MonoBehaviour
     {
         anim.SetTrigger("die");
         Debug.Log("spitter is dead");
-        FindObjectOfType<AudioManager>().Play("KingDeath");
+        FindObjectOfType<AudioManager>().Play("Death");
 
         // Disable movement script
         if (spitterAIScript != null)
