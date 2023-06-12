@@ -15,8 +15,8 @@ public class DarkKingAttack : MonoBehaviour
     [SerializeField] private bool isSlamming = false;
     [SerializeField] private float slamCooldown = 5f;
 
-    public static float kingAttackDamage = 10;
-    public static float kingSlamDamage = 20;
+    public static float kingAttackDamage = 20;
+    public static float kingSlamDamage = 30;
 
     [SerializeField] private CircleCollider2D meleeCollider;
     [SerializeField] private BoxCollider2D slamCollider;

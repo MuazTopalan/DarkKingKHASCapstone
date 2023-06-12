@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class DarkKingHp : MonoBehaviour
 {
-    [SerializeField] private float health;
+    [SerializeField] private float maxHealth = 100;
+    [SerializeField] private float currentHealth;
+    
+    
     [SerializeField] private Animator anim;
-
     private DarkKingMovement movementScript;
     private DarkKingAttack attackScript;
     private Rigidbody2D rb;
     public HealthBarScript healthBar;
-
     private Collider2D playerCollider;
 
     private void Start()
@@ -21,43 +22,64 @@ public class DarkKingHp : MonoBehaviour
         attackScript = GetComponent<DarkKingAttack>();
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            TakeDamage(20);
+        }
+    }
+
+    void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        FindObjectOfType<AudioManager>().Play("Hurt");
+
+        healthBar.SetHealth(currentHealth);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //if (other.CompareTag("LarvaAttackCollider"))
-        //{
-        //    health -= LarvaAI.larvaAttackDamage;
-        //    AudioManager audioManager = FindObjectOfType<AudioManager>();
-        //    if (audioManager != null)
-        //    {
-        //        audioManager.Play("KingHurt");
-        //    }
-        //    healthBar.SetHealth(health);
-        //    Debug.Log("Player health : " + health);
-        //
-        //    if (health <= 0f)
-        //    {
-        //        Die();
-        //    }
-        //}
+        if (other.CompareTag("ghouldMeleeCollider"))
+        {
+            Debug.Log("ghoul hit king");
+            currentHealth -= GhoulAI.ghoulAttackDamage;
+            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            if (audioManager != null)
+            {
+                audioManager.Play("Hurt");
+            }
+            healthBar.SetHealth(currentHealth);
+            Debug.Log("Player health : " + currentHealth);
+        
+            if (currentHealth <= 0f)
+            {
+                Die();
+            }
+        }
 
-        //if (other.CompareTag("fLarvaAttackCollider"))
-        //{
-        //    health -= fLarvaAI.fLarvaAttackDamage;
-        //    AudioManager audioManager = FindObjectOfType<AudioManager>();
-        //    if (audioManager != null)
-        //    {
-        //        audioManager.Play("KingHurt");
-        //    }
-        //    healthBar.SetHealth(health);
-        //    Debug.Log("Player health : " + health);
-        //
-        //    if (health <= 0f)
-        //    {
-        //        Die();
-        //    }
-        //}
+        if (other.CompareTag("spit"))
+        {
+            Debug.Log("spitter hit king with a spit");
+            currentHealth -= Spit.spitDamage;
+            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            if (audioManager != null)
+            {
+                audioManager.Play("Hurt");
+            }
+            healthBar.SetHealth(currentHealth);
+            Debug.Log("Player health : " + currentHealth);
+
+            if (currentHealth <= 0f)
+            {
+                Die();
+            }
+        }
 
         //if (other.CompareTag("StalagmiteTipCollider"))
         //{
@@ -150,10 +172,10 @@ public class DarkKingHp : MonoBehaviour
         AudioManager audioManager = FindObjectOfType<AudioManager>();
         if (audioManager != null)
         {
-            audioManager.Stop("ThemeSong");
+            audioManager.Stop("OST");
             audioManager.Stop("BossMusic");
         }
-        SceneManager.LoadScene(1);
-        audioManager.Play("EndGameMusic");
+        SceneManager.LoadScene(3);
+        //audioManager.Play("EndGameMusic");
     }
 }

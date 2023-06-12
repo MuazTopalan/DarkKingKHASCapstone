@@ -9,6 +9,9 @@ TagManager:
   - kingMeleeCollider
   - kingSlamCollider
   - mapBound
+  - Enemy
+  - ghoulMeleeCollider
+  - spit
   layers:
   - Default
   - TransparentFX
@@ -24,8 +27,8 @@ TagManager:
   - Midground
   - Foreground
   - 
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 
