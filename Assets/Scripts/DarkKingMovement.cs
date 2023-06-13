@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 public class DarkKingMovement : MonoBehaviour
 {
+    private int activeSceneBuildIndex;
+
     private float horizontal;
     [SerializeField] private float speed = 1.5f;
 
@@ -35,6 +38,9 @@ public class DarkKingMovement : MonoBehaviour
 
     private void Start()
     {
+        // Get the build index of the active scene
+        activeSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         canDash = true;
@@ -53,6 +59,12 @@ public class DarkKingMovement : MonoBehaviour
         if (isDashing)
         {
             return;
+        }
+
+        // Check if the 'R' key is pressed
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadScene();
         }
 
 
@@ -156,5 +168,12 @@ public class DarkKingMovement : MonoBehaviour
 
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+
+    private void ReloadScene()
+    {
+        // Reload the current active scene
+        SceneManager.LoadScene(activeSceneBuildIndex);
     }
 }

@@ -6,6 +6,9 @@ public class MainMenu : MonoBehaviour
     public void PlayButton()
     {
         SceneManager.LoadScene(1);
+        FindObjectOfType<AudioManager>().Play("LetterSound");
+        FindObjectOfType<AudioManager>().Stop("MenuOST");
+        FindObjectOfType<AudioManager>().Play("OST");
     }
 
     public void QuitButton()

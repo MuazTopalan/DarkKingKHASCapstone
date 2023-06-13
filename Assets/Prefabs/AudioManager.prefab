@@ -105,3 +105,21 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: LetterSound
+    clip: {fileID: 8300000, guid: 711a63ead3a91d642a9cb43d8dc75326, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MerchantInterract
+    clip: {fileID: 8300000, guid: 7a35f440ed9e97644a7147504f84be07, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MenuOST
+    clip: {fileID: 8300000, guid: c6cac6459146f9d42b709f1e3f69de23, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

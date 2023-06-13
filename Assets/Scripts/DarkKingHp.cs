@@ -29,19 +29,10 @@ public class DarkKingHp : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            TakeDamage(20);
-        }
+
     }
 
-    void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        FindObjectOfType<AudioManager>().Play("Hurt");
 
-        healthBar.SetHealth(currentHealth);
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -80,54 +71,6 @@ public class DarkKingHp : MonoBehaviour
                 Die();
             }
         }
-
-        //if (other.CompareTag("StalagmiteTipCollider"))
-        //{
-        //    health -= StalagmiteTip.stalagmiteTipDamage;
-        //    AudioManager audioManager = FindObjectOfType<AudioManager>();
-        //    if (audioManager != null)
-        //    {
-        //        audioManager.Play("KingHurt");
-        //    }
-        //    healthBar.SetHealth(health);
-        //    Debug.Log("Player health : " + health);
-        //    if (health <= 0f)
-        //    {
-        //        Die();
-        //    }
-        //}
-
-        //if (other.CompareTag("bossTongueAttackCollider"))
-        //{
-        //    health -= BossAttack.bossTongueColliderDamage;
-        //    AudioManager audioManager = FindObjectOfType<AudioManager>();
-        //    if (audioManager != null)
-        //    {
-        //        audioManager.Play("KingHurt");
-        //    }
-        //    healthBar.SetHealth(health);
-        //    Debug.Log("Player health : " + health);
-        //    if (health <= 0f)
-        //    {
-        //        Die();
-        //    }
-        //}
-        //
-        //if (other.CompareTag("bossMeleeAttackCollider"))
-        //{
-        //    health -= BossAttack.bossMeleeColliderDamage;
-        //    AudioManager audioManager = FindObjectOfType<AudioManager>();
-        //    if (audioManager != null)
-        //    {
-        //        audioManager.Play("KingHurt");
-        //    }
-        //    healthBar.SetHealth(health);
-        //    Debug.Log("Player health : " + health);
-        //    if (health <= 0f)
-        //    {
-        //        Die();
-        //    }
-        //}
     }
 
     private void Die()
@@ -173,9 +116,9 @@ public class DarkKingHp : MonoBehaviour
         if (audioManager != null)
         {
             audioManager.Stop("OST");
-            audioManager.Stop("BossMusic");
+            audioManager.Stop("MenuOST");
         }
-        SceneManager.LoadScene(3);
-        //audioManager.Play("EndGameMusic");
+        SceneManager.LoadScene(4);
+        audioManager.Play("MenuOST");
     }
 }
